@@ -9,7 +9,7 @@
 	    $labels = array(
 	    		'name'                => __( 'Products' ),
 	    		'singular_name'       => __( 'Product'),
-	    		'add_new'             => _x( 'Add New Product' ),
+	    		'add_new'             => __( 'Add New Product' ),
 	    		'edit_item'           => __( 'Edit Product'),
 	    		'new_item'            => __( 'New Product'),
 	    		'view_item'           => __( 'View Product'),
