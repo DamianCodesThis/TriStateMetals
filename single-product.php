@@ -5,7 +5,8 @@
  */
 
 get_header();
-
+$format = get_post_format();
+	$format = empty($format)? 'standard' : $format;
 ?>
 
 <?php
@@ -14,24 +15,34 @@ if ( have_posts() ) :
 
 		<div class="row page-wrapper">
 			<article <?php post_class( 'single-post-wrapper '.WpvTemplates::get_layout() )?>>
-	          
-	            <h1 class="entry-title"><?php the_title(); ?></h1>
-	            <?php $img_src = get_field('featured_image', $post->id); ?>
-	            <img src="<?php echo $img_src; ?>">
-	            <div>
-	            	<strong>Poduct Features</strong>
-	            	<?php the_field('product_features'); ?>
-	            </div>
-	            <div>
-	            	<strong>Materials</strong>
-	            	<?php the_field('materials'); ?>
-	            </div>
-	            <div>
-	            	<strong>Product Specs</strong>
-	            	<?php the_field('product_specs'); ?>
-	            </div>
-
-	        </article>
+				<?php
+					global $wpv_has_header_sidebars;
+					if ( $wpv_has_header_sidebars ) {
+						WpvTemplates::header_sidebars();
+					}
+				?>
+				<div class="page-content loop-wrapper clearfix full">
+					<div class="post-article <?php echo esc_attr( $has_media ) ?>-wrapper <?php echo esc_attr( is_single() ? 'single' : '' ) ?>">
+						<div class="<?php echo esc_attr( $format ) ?>-post-format clearfix <?php echo esc_attr( isset( $post_data['act_as_image'] ) ? 'as-image' : 'as-normal' ) ?> <?php echo esc_attr( isset($post_data['act_as_standard']) ? 'as-standard-post-format' : '' ) ?>">
+							<?php $img_src = get_field('featured_image', $post->id); ?>
+				            <img src="<?php echo $img_src; ?>">
+				            <div>
+				            	<strong>Poduct Features</strong>
+				            	<?php the_field('product_features'); ?>
+				            </div>
+				            <div>
+				            	<strong>Materials</strong>
+				            	<?php the_field('materials'); ?>
+				            </div>
+				            <div>
+				            	<strong>Product Specs</strong>
+				            	<?php the_field('product_specs'); ?>
+				            </div>
+						</div>
+					</div>
+					
+				</div>
+			</article>
 
 			<?php WpvTemplates::right_sidebar() ?>
 
