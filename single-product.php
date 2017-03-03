@@ -86,9 +86,17 @@ if ( have_posts() ) :
 			</article>
 
 			<aside class="right">
-				<img class="sidebar-img" src="<?php the_field('sidebar_image'); ?>">
-								<a class="btn" href="<?php the_field('spec_sheet'); ?>">Download Spec Sheet</a>
-								<a class="btn" href="/wp-content/uploads/2017/03/Drexel-Standard-Chart_0.pdf">Download Color Chart</a>
+				<div class="sidebar-img-container">
+					<img class="sidebar-img" src="<?php the_field('sidebar_image'); ?>">
+				</div>
+				<div class="spec-image-container">
+					<img class="spec-img" src="<?php the_field('spec_image'); ?>">
+				</div>
+				<div class="sidebar-btns-container">
+					<span class="small-title"><?php echo the_title(); ?></span>
+					<a class="btn" href="<?php the_field('spec_sheet'); ?>">Download Spec Sheet</a>
+					<a class="btn" href="/wp-content/uploads/2017/03/Drexel-Standard-Chart_0.pdf">Download Color Chart</a>
+				</div>
 			</aside>
 
 			<?php if ( wpv_get_optionb( 'show-related-posts' ) && is_singular( 'post' ) ) : ?>

@@ -24,7 +24,7 @@
 	    		'labels'                   => $labels,
 	    		'hierarchical'        => false,
 	    		'description'         => '',
-	    		'taxonomies'          => array(),
+	    		'taxonomies'          => array('product-categories'),
 	    		'public'              => true,
 	    		'show_ui'             => true,
 	    		'show_in_menu'        => true,
@@ -48,3 +48,31 @@
 	    register_post_type( 'product', $args );
 	}
 	add_action( 'init', 'register_product' );
+
+	function register_product_categories() {
+
+		$labels = array(
+			'name'					=> __( 'Product Categories'),
+			'singular_name'			=> __( 'Product Category'),
+			'menu_name'				=> __( 'Product Categories')
+		);
+	
+		$args = array(
+			'labels'            => $labels,
+			'public'            => true,
+			'show_in_nav_menus' => true,
+			'show_admin_column' => true,
+			'hierarchical'      => true,
+			'show_tagcloud'     => true,
+			'show_ui'           => true,
+			'query_var'         => true,
+			'rewrite'           => true,
+			'query_var'         => true,
+			'capabilities'      => array(),
+		);
+	
+		register_taxonomy( 'product-categories', array( 'product' ), $args );	
+		
+
+	}
+	add_action( 'init', 'register_product_categories' );
