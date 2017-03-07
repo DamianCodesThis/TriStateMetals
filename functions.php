@@ -76,3 +76,26 @@
 
 	}
 	add_action( 'init', 'register_product_categories' );
+
+	function my_the_content_filter($content) {
+	 
+	 $content = str_replace('Drexel Metals', 'Tri-State Metals', $content);
+	  return $content;
+	}
+
+	add_filter( 'the_content', 'my_the_content_filter' );
+
+	function my_acf_load_value( $value, $post_id, $field )
+	{
+
+	    $value = apply_filters('the_content',$value); 
+
+	    return $value;
+	}
+
+	// acf/load_value - filter for every value load
+	add_filter('acf/load_value/name=product_specs', 'my_acf_load_value', 10, 3);
+	add_filter('acf/load_value/name=listing_description', 'my_acf_load_value', 10, 3);
+	add_filter('acf/load_value/name=product_overview', 'my_acf_load_value', 10, 3);
+
+

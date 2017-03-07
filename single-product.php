@@ -22,6 +22,20 @@ if ( have_posts() ) :
 						WpvTemplates::header_sidebars();
 					}
 				?>
+				<script>
+					jQuery( document ).ready(function($) {
+					    $('#specs-btn').click(function() {
+					    	$('#warranty_box').hide();
+					    	$('#specs_box').show();
+					    });
+
+					    $('#warranty-btn').click(function() {
+					    	$('#warranty_box').show();
+					    	$('#specs_box').hide();
+					    });
+					});
+
+				</script>
 
 				<div class="page-content loop-wrapper clearfix full">
 					<div class="post-article <?php echo esc_attr( $has_media ) ?>-wrapper <?php echo esc_attr( is_single() ? 'single' : '' ) ?>">
@@ -32,30 +46,30 @@ if ( have_posts() ) :
 				            	<div class="row">
 				            		<a class="btn" id="specs-btn">Profile</a>
 				            		<a class="btn" id="warranty-btn">Warranty</a>
-				            		<div class="specs-box box">
+				            		<div id="specs_box" class="box">
 				            			<?php the_field('product_specs'); ?>
 				            		</div>
-				            		<div class="warranty-box">
+				            		<div id="warranty_box" class="box">
 									  
 								      <strong>Finishes and product warranty:</strong>
-								      <p>Drexel Metals standard colors are produced by AkzoNobel and contain a minimum of 70% PVDF (Kynar500/Hylar5000) base resin with ceramic pigments. All colors are formulated to ensure consistent appearance, quality and long-term appearance.</p>
+								      <p>Tri-State Metals standard colors are produced by AkzoNobel and contain a minimum of 70% PVDF (Kynar500/Hylar5000) base resin with ceramic pigments. All colors are formulated to ensure consistent appearance, quality and long-term appearance.</p>
 
 								      <strong>Our Family of Product Warranties</strong>
 								      <ul>
 								         <li>
-								            <a href="/sites/drexmet.2mdev.com/files/spec_sheets/GOLD%20STANDARD%2035-Year%20Kynar%20Warranty.pdf">Drexel Metals Gold Standard 35 Year Non-Prorated Paint and System Warranty</a>
+								            <a href="/wp-content/uploads/2017/03/GOLD-STANDARD-35-Year-Kynar-Warranty.pdf">Tri-State Metals Gold Standard 35 Year Non-Prorated Paint and System Warranty</a>
 								         </li>
 								         <li>
-								            <a href="/sites/drexmet.2mdev.com/files/spec_sheets/35-Year%20PVDF%20Standard%20Warranty.pdf">Drexel Metals PVDF 35 Year Paint Warranty</a>
+								            <a href="/wp-content/uploads/2017/03/35-Year-PVDF-Standard-Warranty.pdf">Tri-State Metals PVDF 35 Year Paint Warranty</a>
 								         </li>
 								         <li>
-								            <a href="/sites/drexmet.2mdev.com/files/spec_sheets/Drexel%20Metals%2025-Year%20SMP%20Warranty.pdf">Drexel Metals SMP 25 Year Paint Warranty</a>
+								            <a href="/wp-content/uploads/2017/03/Drexel-Metals-25-Year-SMP-Warranty.pdf">Tri-State Metals SMP 25 Year Paint Warranty</a>
 								         </li>
 								         <li>
-								            <a href="/sites/drexmet.2mdev.com/files/spec_sheets/35-Year%20PVDF%20and%20Aluminum%20Warranty.pdf">Drexel Metals PVDF 35 Year Paint and Aluminum Substrate Warranty</a>
+								            <a href="/wp-content/uploads/2017/03/35-Year-PVDF-and-Aluminum-Warranty.pdf">Tri-State Metals PVDF 35 Year Paint and Aluminum Substrate Warranty</a>
 								         </li>
 								         <li>
-								            <a href="/sites/drexmet.2mdev.com/files/spec_sheets/international%20paint%20warranty.pdf">Drexel Metals International Paint Warranty</a>
+								            <a href="/wp-content/uploads/2017/03/international-paint-warranty.pdf">Tri-State Metals International Paint Warranty</a>
 								         </li>
 								      </ul>
 								      <ul>
@@ -64,7 +78,7 @@ if ( have_posts() ) :
 								         </li>
 								      </ul>
 								      <p>Why so many warranties?&nbsp; The answer is simple....there is not a “one size fits all” warranty.&nbsp;</p>
-								      <p>The Gold Standard Warranty covers the entire Drexel Metals system from the roof deck up and is offer exclusively through our network of fabricators and certified installers.&nbsp; Here are the benefits; If our product fails during the warranty period,&nbsp; Drexel Metals will replace your roof at no cost to you and since your Drexel Metals metal roof is a sensible investment, if you ever decide to sell your property we will transfer the warranty to the next owner(s) for the life of the warranty.&nbsp; For homeowners, its importnat to note that according to Remodeler Magazine you will recoup 85% of your initial investment upon the sale of your property.&nbsp;</p>
+								      <p>The Gold Standard Warranty covers the entire Tri-State Metals system from the roof deck up and is offer exclusively through our network of fabricators and certified installers.&nbsp; Here are the benefits; If our product fails during the warranty period,&nbsp; Tri-State Metals will replace your roof at no cost to you and since your Tri-State Metals metal roof is a sensible investment, if you ever decide to sell your property we will transfer the warranty to the next owner(s) for the life of the warranty.&nbsp; For homeowners, its importnat to note that according to Remodeler Magazine you will recoup 85% of your initial investment upon the sale of your property.&nbsp;</p>
 								      <h3>
 								         <strong>Galvalume® Substrate:</strong>
 								      </h3>
@@ -89,13 +103,13 @@ if ( have_posts() ) :
 				<div class="sidebar-img-container">
 					<img class="sidebar-img" src="<?php the_field('sidebar_image'); ?>">
 				</div>
-				<div class="spec-image-container">
-					<img class="spec-img" src="<?php the_field('spec_image'); ?>">
-				</div>
 				<div class="sidebar-btns-container">
 					<span class="small-title"><?php echo the_title(); ?></span>
 					<a class="btn" href="<?php the_field('spec_sheet'); ?>">Download Spec Sheet</a>
 					<a class="btn" href="/wp-content/uploads/2017/03/Drexel-Standard-Chart_0.pdf">Download Color Chart</a>
+				</div>
+				<div class="spec-image-container">
+					<img class="spec-img" src="<?php the_field('spec_image'); ?>">
 				</div>
 			</aside>
 

@@ -109,32 +109,45 @@ if ( is_page_template( 'page-blank.php' ) ) return;
 					global $post;
 					
 					$terms = get_the_terms($post,'product-categories');
-					if(count($terms) < 1) {
+
+					if(count($terms) < 1 && $post->post_type != 'product' && $terms[0]->taxonomy != 'product-categories') {
 						WpvTemplates::page_header( false, $wpv_title );
 					} else { ?>
+						<style>
+							/*STYLES*/
+
+							#warranty_box {
+								display:none;
+							}
 
 
-					<div id="sub-header" class="layout-full has-background">
+						</style>
+						<div id="sub-header" class="layout-full has-background">
 
-						<div class="meta-header" style="">
+							<div class="meta-header" style="">
 
-							<div class="limit-wrapper">
+								<div class="limit-wrapper">
 
-								<div class="meta-header-inside">
+									<div class="meta-header-inside">
 
-									<header class="page-header ">
-										<div class="page-header-content">
-																	
-												</h1>
-										</div>
-									</header>
+										<header class="page-header ">
+											<div class="page-header-content">
+													
+												<?php if($post->post_type == 'product')	: ?>	
+													<h1 class="product-title"><?php the_title();?></h1>
+
+												<?php else:?>			
+													<h1 class="product-list-title"><?php echo (count($terms > 1) ? $terms[1]->name : $terms[0]->name)?></h1>
+												<?php endif;?>
+											</div>
+										</header>
+									</div>
+
 								</div>
 
 							</div>
 
 						</div>
-
-					</div>
 
 					<?php } ?>
 
