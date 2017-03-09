@@ -110,6 +110,7 @@ if ( is_page_template( 'page-blank.php' ) ) return;
 					
 					$terms = get_the_terms($post,'product-categories');
 
+
 					if(count($terms) < 1 && $post->post_type != 'product' && $terms[0]->taxonomy != 'product-categories') {
 						WpvTemplates::page_header( false, $wpv_title );
 					} else { ?>
@@ -132,12 +133,12 @@ if ( is_page_template( 'page-blank.php' ) ) return;
 
 										<header class="page-header ">
 											<div class="page-header-content">
-													
-												<?php if($post->post_type == 'product')	: ?>	
+							
+												<?php if($post->post_type == 'product' && is_single($post))	: ?>	
 													<h1 class="product-title"><?php the_title();?></h1>
 
 												<?php else:?>			
-													<h1 class="product-list-title"><?php echo (count($terms > 1) ? $terms[1]->name : $terms[0]->name)?></h1>
+													<h1 class="product-list-title"><?php echo single_term_title();?></h1>
 												<?php endif;?>
 											</div>
 										</header>

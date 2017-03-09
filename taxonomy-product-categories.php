@@ -7,11 +7,59 @@
 get_header();
 $format = get_post_format();
 	$format = empty($format)? 'standard' : $format;
+
+
 ?>
 
 		<div class="row page-wrapper">
 		<?php WpvTemplates::left_sidebar() ?>
 <?php
+if(get_query_var('term') == 'products-profiles') {
+	$terms =  get_terms( 'product-categories', array(
+    	'hide_empty' => false,
+    	'orderby'=> 'term_id',
+    	'order' => 'ASC'
+	) );
+	foreach($terms as $term) {
+
+		$args = array(
+		    'post_type' => 'product',
+		    'tax_query' => array(
+		        array (
+		            'taxonomy' => 'product-categories',
+		            'field' => 'slug',
+		            'terms' => $term->slug,
+		        )
+		    ),
+		);
+
+		$query = new Wp_Query( $args );
+		$link = get_term_link($term);
+		?>
+		<div class="grid-1-1">
+			<h2><?php echo $term->name; ?> - <a href="<?php echo $link; ?>">See More</a></h2>
+		</div>
+		<?php
+		if ( $query->have_posts() ) :
+			while ( $query->have_posts() ) : $query->the_post(); ?>
+				<a href="<?php the_permalink(); ?>">
+					<div class="product grid-1-4">
+						<img class="product-img" src="<?php echo get_field('sidebar_image', $post->id); ?>">
+						<span class="product-title"><?php get_the_title($post->id); ?></span>
+						<p class="listing-description"><?php echo get_field('listing_description', $post->id); ?></p>
+						<a class="more" href="<?php get_permalink($post->id); ?>">MORE</a>
+					</div>
+				</a> 
+		<?php endwhile;
+		endif; 
+wp_reset_query();
+		?>
+		
+
+<?php
+
+	}
+} else {
 if ( have_posts() ) :
 	while ( have_posts() ) : the_post(); ?>
 
@@ -56,6 +104,9 @@ if ( have_posts() ) :
 			<?php endif ?>
 		
 	<?php endwhile;
-endif; ?>
+endif; 
+
+}?>
+
 </div>
 <?php get_footer();
