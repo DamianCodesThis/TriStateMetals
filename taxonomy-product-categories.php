@@ -24,7 +24,7 @@ if(get_query_var('term') == 'products-profiles') {
 
 		$args = array(
 		    'post_type' => 'product',
-		    'posts_per_page' => -1,
+		    'posts_per_page' => 4,
 		    'tax_query' => array(
 		        array (
 		            'taxonomy' => 'product-categories',
