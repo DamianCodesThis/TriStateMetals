@@ -121,6 +121,55 @@ if ( is_page_template( 'page-blank.php' ) ) return;
 								display:none;
 							}
 
+							h1.product-title{
+								margin-top: 50px;
+							}
+
+
+							.product.grid-1-4{
+								margin-bottom: 30px;
+
+							}
+
+							.product-list-title{
+								margin-top: 50px;
+							}
+
+							.sidebar-btn{
+							  font-family: "Montserrat", Arial, Serif;
+							  background-color: #643c21;
+							  color: #ffffff;
+							  padding: 10px;
+							  font-weight: bold;
+							  text-transform: uppercase;
+							  border: none;
+							  display: block;
+   							  text-align: center;
+   							  margin: 10px 0px !important; 
+							}
+
+							.btn{
+							  font-family: "Montserrat", Arial, Serif;
+							    background-color: #643c21;
+							    color: #ffffff;
+							    padding: 10px;
+							    font-weight: bold;
+							    text-transform: uppercase;
+							    border: none;
+							    display: block;
+							    text-align: center;
+							    margin-right: 10px;
+							    width: 100px;
+							    float:left;
+
+							}
+
+							.box {
+								clear: both;
+							}
+
+
+
 
 						</style>
 						<div id="sub-header" class="layout-full has-background">
